@@ -271,3 +271,54 @@ camera2.updateProjectionMatrix();
 ```
 
 <img width="1917" height="1090" alt="image" src="https://github.com/user-attachments/assets/99018bea-d8b5-4ff6-9ab2-c45305153ca4" />
+
+### 86. Challenge D — Light Animation
+Buat DirectionalLight atau object visual penanda light bergerak.
+
+Contoh:
+```
+directionalLight
+  .position
+  .x =
+    Math.cos(elapsed)
+    * 4;
+
+directionalLight
+  .position
+  .z =
+    Math.sin(elapsed)
+    * 4;
+```
+Amati perubahan shading dan shadow.
+
+Sebelum (Ambient Light):
+<img width="1917" height="1092" alt="image" src="https://github.com/user-attachments/assets/dfd23e5c-0436-4576-a4ba-c95394ac80cf" />
+
+Sesudah (Ambient Light + Directional Light):
+<img width="1917" height="1086" alt="image" src="https://github.com/user-attachments/assets/af48ee0c-6d7f-4f91-b8a5-1cb752d394f2" />
+
+87. Challenge E — Shadow Quality
+Bandingkan:
+```
+512 × 512
+1024 × 1024
+2048 × 2048
+```
+untuk shadow map.
+
+Jelaskan trade-off:
+```
+quality
+vs
+resource cost
+```
+Tidak perlu menggunakan ukuran ekstrem.
+
+512 x 512:
+<img width="1917" height="1081" alt="image" src="https://github.com/user-attachments/assets/b06bde4e-6afb-4249-93de-ac57144fd05f" />
+
+1024x1024:
+<img width="1917" height="1088" alt="image" src="https://github.com/user-attachments/assets/c915d24f-9619-4a93-94e7-09dc25ec55d3" />
+
+2048x2048:
+<img width="1917" height="1088" alt="image" src="https://github.com/user-attachments/assets/db2c7dd3-16bb-4005-9543-e224ee7b546c" />
