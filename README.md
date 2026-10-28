@@ -352,3 +352,16 @@ Challenge ini digunakan untuk menghubungkan abstraction Three.js dengan pekerjaa
 ```
 <img width="608" height="97" alt="image" src="https://github.com/user-attachments/assets/52163ad1-d397-4ac9-bb37-f383ba4cff52" />
 
+### 89. Challenge G — Toggle Animation
+Tambahkan event-based keyboard:
+
+Space
+→ pause / resume animation
+Gunakan state boolean:
+
+let animationEnabled =
+  true;
+Perubahan toggle cukup dilakukan sekali per key press.
+
+
+
