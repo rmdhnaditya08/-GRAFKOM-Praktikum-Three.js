@@ -322,3 +322,33 @@ Tidak perlu menggunakan ukuran ekstrem.
 
 2048x2048:
 <img width="1917" height="1088" alt="image" src="https://github.com/user-attachments/assets/db2c7dd3-16bb-4005-9543-e224ee7b546c" />
+
+Shadow Map pada dasarnya adalah tekstur (depth texture) khusus yang dibuat dari sudut pandang sumber cahaya untuk mendeteksi apakah suatu titik terhalang objek lain atau tidak.
+
+### 88. Challenge F — Scene Information
+Perluas HUD dengan:
+```
+Camera Position
+Object Count
+Triangle Count
+FPS sederhana
+Material aktif
+```
+Untuk renderer statistics, eksplorasi:
+```
+renderer.info
+```
+Challenge ini digunakan untuk menghubungkan abstraction Three.js dengan pekerjaan rendering di belakang layar.
+```
+  // Hitung FPS
+  frames++;
+  const currentTime = performance.now();
+  if (currentTime >= prevTime + 1000) {
+    fps = Math.round((frames * 1000) / (currentTime - prevTime));
+    frames = 0;
+    prevTime = currentTime;
+  }
+  `FPS: ${fps || "--"}`
+```
+<img width="608" height="97" alt="image" src="https://github.com/user-attachments/assets/52163ad1-d397-4ac9-bb37-f383ba4cff52" />
+
