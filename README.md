@@ -178,3 +178,18 @@ scene.add(
 ```
 
 <img width="923" height="700" alt="image" src="https://github.com/user-attachments/assets/1993da93-6a5b-4401-a82a-7a1b81340629" />
+
+### 85. Challenge C — OrthographicCamera
+Buat mode camera kedua menggunakan:
+~~~
+THREE.OrthographicCamera
+~~~
+Tambahkan tombol:
+
+P
+untuk berpindah:
+
+Perspective
+↔
+Orthographic
+Pastikan projection tetap responsif ketika window resize.
