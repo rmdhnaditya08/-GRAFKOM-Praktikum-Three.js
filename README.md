@@ -185,11 +185,89 @@ Buat mode camera kedua menggunakan:
 THREE.OrthographicCamera
 ~~~
 Tambahkan tombol:
-
+```
 P
+```
 untuk berpindah:
-
+```
 Perspective
 ↔
 Orthographic
+```
 Pastikan projection tetap responsif ketika window resize.
+
+Menggunakan kuboid / kotak proyeksi paralel agar objek tidak terlihat pipih/gepeng saat rasio jendela bukan 1:1, kita gunakan variabel frustumSize yang dikalikan dengan aspect rasio jendela:
+```
+// --------------------
+// Camera 2
+// --------------------
+
+const frustumSize = 12;
+const aspect = sizes.width / sizes.height;
+
+const camera2 = new THREE.OrthographicCamera(
+  (-frustumSize * aspect) / 2, // left (negatif)
+  (frustumSize * aspect) / 2,  // right (positif)
+  frustumSize / 2,             // top (positif)
+  -frustumSize / 2,            // bottom (negatif)
+  0.1,                         // near
+  100                          // far
+);
+
+camera2.position.set(
+  5,
+  9,
+  9
+);
+
+camera2.lookAt(
+  0,
+  0.5,
+  0
+);
+
+scene.add(
+  camera2
+);
+```
+window.addEventListener("resize", ...): Kedua kamera harus memperbarui matriks proyeksinya saat jendela di-resize agar proyeksi tetap responsif dan tidak terdistorsi:
+```
+// Active Camera Tracker
+let activeCamera = camera;
+
+// --------------------
+// Camera Toggle Key (P)
+// --------------------
+
+window.addEventListener(
+  "keydown",
+  (event) => {
+    if (
+      event.key === "p" ||
+      event.key === "P"
+    ) {
+      activeCamera =
+        activeCamera === camera
+          ? camera2
+          : camera;
+    }
+  }
+);
+```
+```
+const currentAspect = sizes.width / sizes.height;
+
+// Update Perspective
+camera.aspect = currentAspect;
+camera.updateProjectionMatrix();
+
+// Update Orthographic
+camera2.left = (-frustumSize * currentAspect) / 2;
+camera2.right = (frustumSize * currentAspect) / 2;
+camera2.top = frustumSize / 2;
+camera2.bottom = -frustumSize / 2;
+camera2.updateProjectionMatrix();
+
+```
+
+<img width="1917" height="1090" alt="image" src="https://github.com/user-attachments/assets/99018bea-d8b5-4ff6-9ab2-c45305153ca4" />
